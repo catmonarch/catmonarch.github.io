@@ -4,19 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Personal Videos</title>
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        video {
+            margin: 0 auto;
+        }
+
+        h4 {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <h4>EmployeeManagerSystem</h4>
-    <br />
-    <video width="480" height="320" controls>
-        <source src="videos/EmployeeManagerSystem.mp4" type="video/mp4">
-    </video>
-    <h4>CyberMaster</h4>
-    <br />
-    <video width="480" height="320" controls>
-        <source src="videos/EmployeeManagerSystem.mp4" type="video/mp4">
-    </video>
+    <div class="video-container">
+        <div>
+            <h4>EmployeeManagerSystem</h4>
+            <video width="480" height="320" controls>
+                <source src="videos/EmployeeManagerSystem.mp4" type="video/mp4">
+                您的浏览器不支持 Video 标签。
+            </video>
+        </div>
+        <div>
+            <h4>CyberMaster</h4>
+            <video width="480" height="320" controls>
+                <source src="videos/CyberMaster.mp4" type="video/mp4">
+                您的浏览器不支持 Video 标签。
+            </video>
+        </div>
+    </div>
 </body>
 
 </html>
