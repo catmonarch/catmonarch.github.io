@@ -5,40 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Videos</title>
+    <link rel="stylesheet" type="text/css" href="./css/swiper-bundle.min.css">
     <style>
-        .video-container {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
+        body {
+            background-color: rgba(255, 255, 255, 0.9);
+            background-image: url(./images/bcakground.jpg);
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-attachment: scroll;
         }
 
+        .swiper,
         video {
-            margin: 0 auto;
+            width: 960px;
+            height: 640px;
         }
 
-        h4 {
+        .title {
+            color: white;
             text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="video-container">
-        <div>
-            <h4>EmployeeManagerSystem</h4>
-            <video width="480" height="320" controls poster="images/EmployeeManagerSystem.jpg" preload="metadata">
-                <source src="videos/EmployeeManagerSystem.mp4" type="video/mp4">
-                您的浏览器不支持 Video 标签。
-            </video>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="title">EmployeeManagerSystem</div>
+                <video controls poster="images/EmployeeManagerSystem.jpg" preload="metadata">
+                    <source src="videos/EmployeeManagerSystem.mp4" type="video/mp4">
+                    您的浏览器不支持 Video 标签。
+            </div>
+            <div class="swiper-slide">
+                <div class="title">SmartStorager</div>
+                <video controls poster="images/SmartStorager.jpg" preload="metadata">
+                    <source src="videos/SmartStorager.mp4" type="video/mp4">
+                    您的浏览器不支持 Video 标签。
+                </video>
+            </div>
+            <div class="swiper-slide">
+                <div class="title">CyberMaster</div>
+                <video controls poster="images/CyberMaster.jpg" preload="metadata">
+                    <source src="videos/CyberMaster.mp4" type="video/mp4">
+                    您的浏览器不支持 Video 标签。
+                </video>
+            </div>
         </div>
-        <div>
-            <h4>CyberMaster</h4>
-            <video width="480" height="320" controls poster="images/CyberMaster.jpg" preload="metadata">
-                <source src="videos/CyberMaster.mp4" type="video/mp4">
-                您的浏览器不支持 Video 标签。
-            </video>
-        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
     </div>
+    <script src="./JS/swiper-bundle.min.js"></script>
+    <script>
+        let mySwiper = new Swiper('.swiper', {
+            direction: 'horizontal', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            }
+        })
+
+        let videos = document.querySelectorAll("video")
+        videos.forEach(function (video) {
+            video.addEventListener('play', function () {
+                mySwiper.autoplay.pause()
+            });
+
+            video.addEventListener('ended', function () {
+                swiper.autoplay.start();
+            });
+
+            video.addEventListener('pause', function () {
+                if (!this.currentTime || this.currentTime === 0) {
+                    // 如果是用户点击播放按钮后立即暂停  
+                    // 则不恢复自动播放  
+                    return;
+                }
+                swiper.autoplay.start(); // 用户手动暂停时恢复自动播放  
+            });
+        });
+    </script>
 </body>
 
 </html>
